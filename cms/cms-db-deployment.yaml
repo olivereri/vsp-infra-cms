@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cms-db-drupal
+  name: database
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: cms-db-drupal
+      app: database
   template:
     metadata:
       labels:
-        app: cms-db-drupal
+        app: database
     spec:
       containers:
       - image: public.ecr.aws/b5z4s5t8/cms-repo:db
-        name: cms-db-drupal
+        name: database
         ports:
         - containerPort: 3306
