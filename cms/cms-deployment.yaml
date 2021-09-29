@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cms-drupal
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: cms-drupal
+  template:
+    metadata:
+      labels:
+        app: cms-drupal
+    spec:
+      containers:
+      - image: public.ecr.aws/b5z4s5t8/cms-repo:v0.0.414
+        name: cms-drupal
+        ports:
+        - containerPort: 80
